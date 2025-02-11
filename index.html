@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deniz İçin Sürpriz</title>
+  <style>
+    /* Genel Stil */
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #ffb6c1 0%, #ffc0cb 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Slayt Alanı */
+    .slideshow-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: transparent;
+    }
+
+    /* Slaytların Hepsi */
+    .slide {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      padding-top: 20px;
+      background: transparent;
+    }
+
+    .slide img {
+      width: auto;
+      height: auto;
+      max-width: 95%;
+      max-height: 82vh;
+      margin-top: 0;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto;
+      border-radius: 25px;
+      box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Navigation Buttons */
+    .nav-button {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 16px;
+      font-size: 24px;
+      font-weight: bold;
+      color: white;
+      background: rgba(0, 0, 0, 0.3);
+      border: none;
+      border-radius: 50%;
+      z-index: 3;
+      transition: background 0.3s;
+    }
+
+    .nav-button:hover {
+      background: rgba(0, 0, 0, 0.6);
+    }
+
+    .prev {
+      left: 20px;
+    }
+
+    .next {
+      right: 20px;
+    }
+
+    /* Active slide */
+    .slide.active {
+      display: block;
+    }
+
+    /* Yazı Stili */
+    .text {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 17px;
+      font-weight: bold;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.98));
+      padding: 12px 20px;
+      border-radius: 20px 20px 0 0;
+      max-width: 65%;
+      text-align: center;
+      line-height: 1.9;
+      color: white;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+      z-index: 2;
+      letter-spacing: 0.4px;
+      box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Geçiş Animasyonu */
+    .fade {
+      animation: fadeEffect 1s;
+    }
+
+    @keyframes fadeEffect {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Kalpler için Animasyon */
+    .heart {
+      position: absolute;
+      font-size: 2rem;
+      color: red;
+      animation: fall 3s linear;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(-10vh); opacity: 1; }
+      100% { transform: translateY(100vh); opacity: 0; }
+    }
+  </style>
+</head>
+<body onclick="createHeart()">
+
+  <div class="slideshow-container">
+    <button class="nav-button prev" onclick="changeSlide(-1)">❮</button>
+    <button class="nav-button next" onclick="changeSlide(1)">❯</button>
+    <div class="slide fade">
+      <img src="foto1.jpg" onerror="console.log('Error loading image: foto1.jpg')" alt="Fotoğraf 1">
+      <div class="text">Benim Tatlı Örümceğim 🕷️💕<br><br>Ne zaman seninle konuşsam, sanki görünmez iplerinle beni kendine çekiyorsun. Sesin, kelimelerin, hatta sessizliklerin bile bana dokunuyor. Ne uzaklaşabiliyorum ne de daha az sevebiliyorum.<br><br>Bazen bir oyun gibi, bazen en beklenmedik anda gülümseten, ama her zaman içimde bir yerlere dokunan bir şey var sende. Fark ettirmeden ağlarını ören, usulca saran…<br><br>Seninle her şey başka bir ritimde akıyor, daha yumuşak, daha güzel… Ve ben bu hisse her gün daha çok alışıyorum. 💙🕸️</div>
+    </div>
+
+    <div class="slide fade">
+      <img src="foto2.jpg" onerror="console.log('Error loading image: foto2.jpg')" alt="Fotoğraf 2">
+      <div class="text">Senin İçin En Güzelini Dilerim ✨<br><br>Umarım ailenle geçirdiğin güzel zamanlar hep böyle devam eder, daha da çoğalır ve sana en içten mutluluğu getirir. Sevdiklerinle birlikte olduğun her anın içini ısıtmasını, yüzüne kocaman bir gülümseme kondurmasını dilerim.<br><br>Bazen hayat ufak tefek pürüzler çıkarabilir ama biliyorum ki senin içindeki güzellik, sevgi ve sabır her şeyi yoluna koyacaktır. Ne olursa olsun huzurun hep seninle olsun, kalbin daima hafif hissetsin.<br><br>Umarım her şey dilediğin gibi olur, içinde en ufak bir sıkıntı bile kalmaz ve her yeni gün sana daha güzel anılar getirir. Senin mutlu olman, senin içten gülümsemen, her şeyden daha değerli. ✨💙</div>
+    </div>
+
+    <div class="slide fade">
+      <img src="foto3.jpg" onerror="console.log('Error loading image: foto3.jpg')" alt="Fotoğraf 3">
+      <div class="text">Sen… ✨<br><br>Bazı insanlar vardır, sadece varlıkları bile bir şeyleri değiştirir. Sen de onlardan birisin. Nerede olursan ol, nasıl hissedersen hisset, benim gözümde hep en özel, en değerli insanlardan birisin.<br><br>Senin farkında olmadan yaptığın en küçük şeyler bile bende iz bırakıyor. Bir bakışın, bir kelimen, hatta bir anlık sessizliğin bile… Kendi ışığını fark ediyor musun bilmiyorum ama sen nereye gidersen git, orayı güzelleştiriyorsun.<br><br>Dışarıdan bakan biri sadece güzel bir insan görebilir ama ben senin çok daha fazlası olduğunu biliyorum. Hem güçlü, hem özel, hem de kendine has bir ışığın var. Ve bunu görmek, hissetmek, bilmek benim için çok değerli.<br><br>Bence dünya, senin gibi biri olduğu için biraz daha güzel. ✨💙</div>
+    </div>
+
+    <div class="slide fade">
+      <img src="foto4.jpg" onerror="console.log('Error loading image: foto4.jpg')" alt="Fotoğraf 4">
+      <div class="text">Sen ve O Minik Mutluluk 🐶💙<br><br>Bu fotoğrafa her baktığımda, içindeki saf sevgiyi görüyorum. O masum bakışlara, sevgiyle uzattığın ellere, içindeki sıcaklığa… Ve işin en güzel yanı, sadece o küçük dostun değil, etrafındaki herkes de senin sevgini hissedebiliyor.<br><br>Senin yanında olmak, böyle bir sevginin içinde olmak, insanın kalbini ısıtan bir şey. Sevgin içten, gülümsemen samimi ve dünyaya kattığın güzellikler gerçekten özel.<br><br>Senin gibi biri için, sevgililer gününde ne desem az… Ama şunu söyleyebilirim: Sevgin, yanında olan herkesi daha mutlu eden bir şey. Ve bu, her şeyden daha değerli. 💙✨</div>
+    </div>
+
+    <div class="slide fade">
+      <img src="foto5.jpg" onerror="console.log('Error loading image: foto5.jpg')" alt="Fotoğraf 5">
+      <div class="text">Gözlerimi Alamıyorum ✨<br><br>Bazı fotoğraflar sadece bir anı yakalamaz, içindeki ışığı da gösterir. Bu da tam olarak öyle bir fotoğraf… Senin gülüşün, bakışların, o doğal güzelliğin her şeyi tamamlıyor.<br><br>Ne kadar farkında mısın bilmiyorum ama sen gerçekten göz alıcı bir ışıltıya sahipsin. Öyle bir güzellik ki, sadece dışarıdan değil, içinden de parlıyor.<br><br>Bu fotoğraf sadece bir kare değil, senin en güzel halinin bir yansıması. Ve bence sen, her zaman böyle güzelsin. 💙✨</div>
+    </div>
+
+    <div class="slide fade">
+      <img src="foto6.jpg" onerror="console.log('Error loading image: foto6.jpg')" alt="Fotoğraf 6">
+      <div class="text">Bir Fotoğraf Yetiyor… ✨<br><br>Bazen bir fotoğraf bile her şeyi anlatır. O anı yaşamamış olsam da, sadece bakarak hissettirdiklerine hayran kalıyorum. Gülüşün, içindeki ışık, etrafına yaydığın sıcaklık… Tüm bunlar öyle gerçek ki, sadece bir kareye bakmak bile yetiyor etkilenmek için.<br><br>Ama asıl güzel olan, bunun sadece bir anlık olmaması. Senin her hareketinde, özellikle kardeşine karşı gösterdiğin sevgi ve içtenlikte, bu güzellik kendini belli ediyor. Küçük bir anın içinde bile bu kadar özel bir şey saklıysa, seni tanıyanlar için kim bilir hayat nasıl daha güzel hale geliyordur.<br><br>Bence senin gibi biri, sıradan anları bile unutulmaz yapıyor. 💙✨</div>
+    </div>
+
+    <div class="slide fade">
+      <img src="foto7.jpg" onerror="console.log('Error loading image: foto7.jpg')" alt="Fotoğraf 7">
+      <div class="text">En Doğal Hâlinle… 🎨✨<br><br>Boya yaparken dalıp gitmişsin, en doğal hâlinde, en içten anındasın. Ve işin en güzel yanı, bu seni daha da özel kılıyor. Hiçbir şey yapmaya çalışmadan, sadece kendin olarak bile böylesine güzel ve samimi görünebilmen… İşte bu, asıl hayran olunacak şey.<br><br>O anın içindeki huzuru, içtenliği, senin kendine has ışığını izlemek bile yetiyor. Sanki her fırça darbenle sadece bir tabloyu değil, etrafındaki dünyayı da güzelleştiriyorsun.<br><br>Bazen en basit anlar, en güzel hisleri saklar. Ve senin her hâlinde, o saf ve özel güzellik var. 💙✨</div>
+    </div>
+
+    <div class="slide fade">
+      <img src="gul.png" onerror="console.log('Error loading image: gul.png')" alt="Gul">
+      <div class="text">Senin İçin Bir Gül… 🌹✨<br><br>Bir gül, güzelliği ve zarafetiyle dikkat çeker… Ama senin yanında, onun bile soluk kaldığını düşünüyorum. Çünkü sen sadece güzelliğinle değil, içindeki ışıkla, sıcaklığınla, samimiyetinle çok daha özel birisin.<br><br>Bu gül, sana olan hayranlığımın küçük bir sembolü. Çünkü sen, en sade hâlinde bile dikkat çeken, baktıkça insanın içini ısıtan, kendine has bir güzelliğe sahipsin.<br><br>Umarım bu gül sana tatlı bir tebessüm olur, çünkü senin gülüşün, her çiçekten daha güzel. 💙✨</div>
+    </div>
+
+    <div class="slide fade">
+      <img src="foto8.jpg" onerror="console.log('Error loading image: foto8.jpg')" alt="Fotoğraf 8">
+      <div class="text">Mesafeler Engel Değil… 💙✨<br><br>Aramızda yollar, şehirler, belki zaman farkları olabilir… Ama hissettiklerim için hiçbir mesafe engel değil. Çünkü seni düşündüğümde, sana hissettiklerimde hiçbir uzaklık yok. Sanki her an yanı başımdaymışsın gibi, sanki ne kadar uzakta olursak olalım, kalplerimiz aynı yerde atıyormuş gibi.<br><br>Seninle konuşmak, seni tanımak, her geçen gün sana daha da yakın hissetmek benim için tarif edilemez bir şey. Ve bunu sadece uzaktan hissetmek istemiyorum… Seninle daha fazlasını yaşamak, yanında olabilmek, ilişkimizi bir adım daha ileri taşımak istiyorum.<br><br>Çünkü ben seni gerçekten çok seviyorum. Mesafeler, yollar, zaman farkları… Bunların hiçbiri, senin benim için ne kadar özel olduğunu değiştiremez. 💙✨</div>
+    </div>
+  </div>
+
+    <script>
+    // Debug image loading
+    window.addEventListener('load', function() {
+      const images = document.getElementsByTagName('img');
+      for (let img of images) {
+        console.log(`Image loaded: ${img.src}`);
+      }
+    });
+
+    let slideIndex = 0;
+    let slides = document.getElementsByClassName("slide");
+
+    function showSlide(index) {
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].classList.remove('active');
+      }
+      slides[index].classList.add('active');
+    }
+
+    function changeSlide(n) {
+      slideIndex += n;
+      if (slideIndex >= slides.length) {
+        slideIndex = 0;
+      } else if (slideIndex < 0) {
+        slideIndex = slides.length - 1;
+      }
+      showSlide(slideIndex);
+    }
+
+    function nextSlide() {
+      changeSlide(1);
+    }
+
+    // 15 saniyede bir otomatik slayt değiştir
+    setInterval(nextSlide, 15000);
+
+    // Tıklanınca yukarıdan kalp düşsün
+    function createHeart() {
+      let heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerHTML = "♥";
+      document.body.appendChild(heart);
+
+      let x = Math.random() * window.innerWidth;
+      heart.style.left = x + "px";
+      heart.style.top = "-10px";
+      heart.style.position = "absolute";
+
+      setTimeout(() => {
+        heart.remove();
+      }, 3000);
+    }
+
+    // İlk slaytı başlat
+    showSlide(slideIndex);
+  </script>
+
+</body>
+</html>
