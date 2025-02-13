@@ -39,73 +39,31 @@
       text-align: center;
       padding-top: 20px;
       background: transparent;
+      display: flex; /* Flexbox kullanarak yan yana yerleştirme */
+      flex-direction: row; /* Yatay düzen */
+      justify-content: center; /* Ortala */
+      align-items: center; /* Dikey ortala */
     }
 
     .slide img {
       width: auto;
       height: auto;
-      max-width: 95%;
+      max-width: 45%; /* Fotoğraf genişliği */
       max-height: 82vh;
-      margin-top: 0;
-      object-fit: contain;
-      display: block;
-      margin: 0 auto;
+      margin: 0 10px; /* Aralık */
       border-radius: 25px;
       box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
     }
 
-    /* Navigation Buttons */
-    .nav-button {
-      cursor: pointer;
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      padding: 16px;
-      font-size: 24px;
-      font-weight: bold;
-      color: white;
-      background: rgba(0, 0, 0, 0.3);
-      border: none;
-      border-radius: 50%;
-      z-index: 3;
-      transition: background 0.3s;
-    }
-
-    .nav-button:hover {
-      background: rgba(0, 0, 0, 0.6);
-    }
-
-    .prev {
-      left: 20px;
-    }
-
-    .next {
-      right: 20px;
-    }
-
-    /* Active slide */
-    .slide.active {
-      display: block;
-    }
-
-    /* Yazı Stili */
     .text {
-      position: fixed;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
+      max-width: 45%; /* Metin genişliği */
       font-size: 16px;
       font-weight: bold;
       background: linear-gradient(to bottom, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.98));
       padding: 10px 15px;
       border-radius: 20px 20px 0 0;
-      max-width: 90%; /* Daha geniş alan */
-      white-space: normal; /* Metinlerin yatay akmasını sağlar */
-      text-align: center;
-      line-height: 1.8;
       color: white;
       text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
-      z-index: 2;
       letter-spacing: 0.4px;
       box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.3);
     }
@@ -131,6 +89,16 @@
     @keyframes fall {
       0% { transform: translateY(-10vh); opacity: 1; }
       100% { transform: translateY(100vh); opacity: 0; }
+    }
+
+    /* Responsive ayarlar */
+    @media (max-width: 768px) {
+      .slide {
+        flex-direction: column; /* Mobilde dikey düzen */
+      }
+      .slide img, .text {
+        max-width: 90%; /* Mobilde daha geniş alan */
+      }
     }
   </style>
 </head>
